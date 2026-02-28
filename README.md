@@ -13,7 +13,7 @@ Shared directory is mounted under `/home`, shared and accessible through out the
 
 ## Lammps program
 
-LAMMPS binary is tored under `/home/work/bin`. The directory is in the `$PATH`.
+LAMMPS binary is tored under `/home/share/bin`. The directory is in the `$PATH`.
 User full address in batch file
 
 

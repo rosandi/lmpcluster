@@ -13,9 +13,11 @@ service dbus start
 service ssh start
 service munge start
 
-mkdir -p /home/work/bin
-if [[ ! -x /home/work/bin/lmp_mpi ]]; then
-	cp /opt/bin/lmp_mpi /home/work/bin/
+mkdir -p /home/share/bin
+mkdir -p /home/share/files
+if [[ ! -x /home/share/bin/lmp_mpi ]]; then
+	cp /opt/bin/lmp_mpi /home/share/bin/
+	cp -a /opt/potentials /home/share/files/
 fi
 
 if [[ -z $NOSLURM ]]; then
