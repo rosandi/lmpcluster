@@ -17,12 +17,14 @@ services:
     volumes:
       - slurmstate:/var/slurm
       - gshare:/home
+      - ./slurm.conf:/usr/local/etc/slurm.conf
 
   node:
     image: rosandi/gnode
     build:
       context: .
       dockerfile: Dockerfile.node
+    profiles: ["manual"]
 
   node01:
     image: rosandi/gnode
