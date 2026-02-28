@@ -1,0 +1,19 @@
+from rosandi/ghead
+
+workdir /opt
+run apt install --yes --quiet git
+run git clone https://github.com/lammps/lammps.git
+
+workdir /opt/lammps/src
+run make yes-MANYBODY
+run make mpi -j4
+run mkdir /opt/bin
+run mv lmp_mpi /opt/bin
+workdir /root
+run rm -r /opt/lammps
+run apt install sudo
+run apt clean
+run echo 'export PATH=/home/work/bin:$PATH' > /etc/profile.d/lmp_path.sh
+copy entry-head.sh /scripts/
+run chmod +x /scripts/entry-head.sh
+cmd ["/scripts/entry-head.sh"]

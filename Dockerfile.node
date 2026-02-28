@@ -1,0 +1,5 @@
+from rosandi/gnode
+run apt install sudo
+copy entry-node.sh /scripts/
+run chmod +x /scripts/entry-node.sh
+cmd ["/scripts/entry-node.sh"]

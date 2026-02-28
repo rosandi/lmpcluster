@@ -1,0 +1,73 @@
+x-common-environment: &lmpenv
+  environment:
+    - LMPUSER=lmpuser
+    - CFGSERVER=ghead
+
+services:
+  head:
+    image: rosandi/lmpcls
+    build:
+      context: .
+      dockerfile: Dockerfile.head
+    hostname: ghead
+    container_name: lmphead
+    <<: *lmpenv
+    networks: 
+      - guriang
+    volumes:
+      - slurmstate:/var/slurm
+      - gshare:/home
+
+  node:
+    image: rosandi/gnode
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+
+  node01:
+    image: rosandi/gnode
+    hostname: node01
+    container_name: lmpnode01
+    <<: *lmpenv
+    networks:
+      - guriang
+    volumes:
+      - gshare:/home
+
+  node02:
+    image: rosandi/gnode
+    hostname: node02
+    container_name: lmpnode02
+    <<: *lmpenv
+    networks:
+      - guriang
+    volumes:
+      - gshare:/home
+
+  node03:
+    image: rosandi/gnode
+    hostname: node03
+    container_name: lmpnode03
+    <<: *lmpenv
+    networks:
+      - guriang
+    volumes:
+      - gshare:/home
+
+  node04:
+    image: rosandi/gnode
+    hostname: node04
+    container_name: lmpnode04
+    <<: *lmpenv
+    networks:
+      - guriang
+    volumes:
+      - gshare:/home
+
+volumes:
+  gshare:
+  slurmstate:
+ 
+networks:
+  guriang:
+
